@@ -31,9 +31,8 @@ import com.geniuz.movemate.ui.theme.Purple40
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopSection() {
+fun TopSection(isFullScreen: Boolean, onFullScreen: (Boolean) -> Unit) {
     var searchText by remember { mutableStateOf("") }
-    var isNormalMode by remember { mutableStateOf(true) }
     val focusManager = LocalFocusManager.current
 
     Column(
@@ -43,7 +42,7 @@ fun TopSection() {
             .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
 
-        AnimatedVisibility(visible = isNormalMode) {
+        AnimatedVisibility(visible = !isFullScreen) {
             TopBar()
         }
 
@@ -51,13 +50,13 @@ fun TopSection() {
             verticalAlignment = Alignment.CenterVertically
         ) {
 
-            AnimatedVisibility(visible = !isNormalMode) {
+            AnimatedVisibility(visible = isFullScreen) {
                 Icon(
                     modifier = Modifier
                         .size(32.dp)
                         .clickable {
                             focusManager.clearFocus()
-                            isNormalMode = true
+                            onFullScreen(false)
                         },
                     imageVector = Icons.Filled.KeyboardArrowLeft,
                     tint = Color.White,
@@ -72,7 +71,7 @@ fun TopSection() {
                     .padding(vertical = 16.dp)
                     .onFocusChanged {
                         if (it.isFocused) {
-                            isNormalMode = false
+                            onFullScreen(true)
                         }
                     },
                 shape = RoundedCornerShape(100),

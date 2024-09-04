@@ -13,6 +13,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.geniuz.movemate.ui.components.BottomBarDestinations
+import com.geniuz.movemate.ui.screens.CalculateScreen
 import com.geniuz.movemate.ui.screens.HomeScreen
 import com.geniuz.movemate.ui.theme.MoveMateTheme
 
@@ -21,7 +22,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MoveMateTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -45,7 +45,7 @@ fun MoveMateNavHost(navController: NavHostController) {
                     }
 
                     BottomBarDestinations.CALCULATE -> {
-
+                        CalculateScreen()
                     }
 
                     BottomBarDestinations.SHIPMENT -> {
