@@ -15,6 +15,7 @@ import androidx.navigation.compose.rememberNavController
 import com.geniuz.movemate.ui.components.BottomBarDestinations
 import com.geniuz.movemate.ui.screens.CalculateScreen
 import com.geniuz.movemate.ui.screens.HomeScreen
+import com.geniuz.movemate.ui.screens.ShipmentScreen
 import com.geniuz.movemate.ui.theme.MoveMateTheme
 
 class MainActivity : ComponentActivity() {
@@ -49,7 +50,7 @@ fun MoveMateNavHost(navController: NavHostController) {
                     }
 
                     BottomBarDestinations.SHIPMENT -> {
-
+                        ShipmentScreen(navController)
                     }
 
                     BottomBarDestinations.PROFILE -> {
