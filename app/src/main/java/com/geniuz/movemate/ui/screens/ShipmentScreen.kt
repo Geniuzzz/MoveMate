@@ -11,7 +11,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -33,7 +35,10 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.geniuz.movemate.ui.components.ShipmentDetails
+import com.geniuz.movemate.ui.components.ShipmentState
 import com.geniuz.movemate.ui.pxToDp
 import com.geniuz.movemate.ui.theme.OrangeColor
 import com.geniuz.movemate.ui.theme.Purple40
@@ -79,6 +84,30 @@ fun ShipmentScreen(navController: NavController) {
 
         ShipmentFilters(selectedIndex) {
             selectedIndex = it
+        }
+
+        LazyColumn(
+            Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+        ) {
+
+            item {
+                Text(
+                    modifier = Modifier.padding(vertical = 16.dp),
+                    text = "Shipments",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
+            }
+
+            val details = if (selectedIndex % 2 == 0) {
+                dummyShipmentDetails
+            } else dummyShipmentDetails.reversed()
+
+            items(details) { detail ->
+                ShipmentDetails(shipmentDetails = detail)
+            }
         }
     }
 }
@@ -140,7 +169,7 @@ fun ShipmentFilter(
                     .padding(start = 8.dp, bottom = 16.dp)
                     .background(
                         if (isSelected) OrangeColor else Purple80,
-                        RoundedCornerShape(8.dp)
+                        RoundedCornerShape(16.dp)
                     )
                     .padding(horizontal = 8.dp, vertical = 2.dp),
                 text = "${shipmentFilter.count}",
@@ -168,4 +197,61 @@ private val dummyFilters = listOf(
     ShipmentFilter("In progress", 3),
     ShipmentFilter("Pending", 4),
     ShipmentFilter("Cancelled", 0),
+)
+
+private val dummyShipmentDetails = listOf(
+    ShipmentDetails(
+        ShipmentState.IN_PROGRESS,
+        "Arriving today!",
+        "Your delivery, #N123456575587\nfrom Atlanta, is arriving today!",
+        "$230 USD"
+    ),
+    ShipmentDetails(
+        ShipmentState.PENDING,
+        "Arriving today!",
+        "Your delivery, #N123456575587\nfrom Atlanta, is arriving today!",
+        "$230 USD"
+    ),
+    ShipmentDetails(
+        ShipmentState.PENDING,
+        "Arriving today!",
+        "Your delivery, #N123456575587\nfrom Atlanta, is arriving today!",
+        "$230 USD"
+    ),
+    ShipmentDetails(
+        ShipmentState.PENDING,
+        "Arriving today!",
+        "Your delivery, #N123456575587\nfrom Atlanta, is arriving today!",
+        "$230 USD"
+    ),
+    ShipmentDetails(
+        ShipmentState.PENDING,
+        "Arriving today!",
+        "Your delivery, #N123456575587\nfrom Atlanta, is arriving today!",
+        "$230 USD"
+    ),
+    ShipmentDetails(
+        ShipmentState.PENDING,
+        "Arriving today!",
+        "Your delivery, #N123456575587\nfrom Atlanta, is arriving today!",
+        "$230 USD"
+    ),
+    ShipmentDetails(
+        ShipmentState.PENDING,
+        "Arriving today!",
+        "Your delivery, #N123456575587\nfrom Atlanta, is arriving today!",
+        "$230 USD"
+    ),
+    ShipmentDetails(
+        ShipmentState.PENDING,
+        "Arriving today!",
+        "Your delivery, #N123456575587\nfrom Atlanta, is arriving today!",
+        "$230 USD"
+    ),
+    ShipmentDetails(
+        ShipmentState.PENDING,
+        "Arriving today!",
+        "Your delivery, #N123456575587\nfrom Atlanta, is arriving today!",
+        "$230 USD"
+    ),
 )
