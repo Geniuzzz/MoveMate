@@ -35,39 +35,45 @@ fun TrackingCard(modifier: Modifier = Modifier) {
         modifier
             .fillMaxWidth()
             .background(Color.White, RoundedCornerShape(16.dp))
-            .padding(16.dp)
     ) {
-        Text(
-            text = "Shipment Number",
-            color = Color.Gray,
-            fontSize = 12.sp
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        Text(
-            text = "N124T2T46284298",
-            fontWeight = FontWeight.SemiBold
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        Box(
-            modifier = Modifier
+        Column(
+            Modifier
                 .fillMaxWidth()
-                .height(1.dp)
-                .background(Color.LightGray)
-        )
+                .padding(16.dp)
+        ) {
 
-        TrackingUserCard(
-            type = "Sender",
-            location = "Atlanta, 5243",
-            status = "Time",
-            details = "2 days - 3 days"
-        )
+            Text(
+                text = "Shipment Number",
+                color = Color.Gray,
+                fontSize = 12.sp
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = "N124T2T46284298",
+                fontWeight = FontWeight.SemiBold
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(1.dp)
+                    .background(Color.LightGray)
+            )
 
-        TrackingUserCard(
-            type = "Receiver",
-            location = "Chicago, 6342",
-            status = "Status",
-            details = "Waiting to collect"
-        )
+            TrackingUserCard(
+                type = "Sender",
+                location = "Atlanta, 5243",
+                status = "Time",
+                details = "2 days - 3 days"
+            )
+
+            TrackingUserCard(
+                type = "Receiver",
+                location = "Chicago, 6342",
+                status = "Status",
+                details = "Waiting to collect"
+            )
+        }
 
         Box(
             modifier = Modifier
