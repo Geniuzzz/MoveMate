@@ -1,6 +1,8 @@
 package com.geniuz.movemate.ui.screens
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,6 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -39,7 +42,12 @@ fun HomeScreen(navController: NavController) {
             TrackingSection()
         }
 
-        AnimatedVisibility(visible = isFullScreen) {
+        AnimatedVisibility(
+            visible = isFullScreen,
+            enter = fadeIn() + expandVertically(
+                expandFrom = Alignment.Top
+            ),
+        ) {
             SearchResultUI(
                 Modifier
                     .fillMaxWidth()
