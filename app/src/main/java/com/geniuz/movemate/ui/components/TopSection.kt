@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -39,7 +40,8 @@ fun TopSection(isFullScreen: Boolean, onFullScreen: (Boolean) -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .background(Purple40)
-            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .padding(horizontal = 16.dp)
+            .padding(top = 8.dp)
     ) {
 
         AnimatedVisibility(visible = !isFullScreen) {
@@ -69,6 +71,7 @@ fun TopSection(isFullScreen: Boolean, onFullScreen: (Boolean) -> Unit) {
                     .fillMaxWidth()
                     .padding(start = 8.dp)
                     .padding(vertical = 16.dp)
+                    .height(48.dp)
                     .onFocusChanged {
                         if (it.isFocused) {
                             onFullScreen(true)

@@ -32,7 +32,7 @@ fun TopBar() {
     ) {
         Image(
             modifier = Modifier
-                .size(60.dp)
+                .size(40.dp)
                 .clip(CircleShape),
             imageVector = Icons.Outlined.AccountCircle,
             contentDescription = ""
@@ -50,13 +50,14 @@ fun TopBar() {
 
                 Text(
                     text = "Your location",
-                    color = Color.LightGray
+                    color = Color.LightGray,
+                    style = MaterialTheme.typography.titleLarge.copy(fontSize = 14.sp)
                 )
             }
             Text(
                 text = "Wertheimer, Illinois",
                 color = Color.White,
-                style = MaterialTheme.typography.titleLarge.copy(fontSize = 20.sp)
+                style = MaterialTheme.typography.titleLarge.copy(fontSize = 16.sp)
             )
         }
 
@@ -64,7 +65,7 @@ fun TopBar() {
 
         Icon(
             modifier = Modifier
-                .size(60.dp)
+                .size(40.dp)
                 .background(Color.White, CircleShape)
                 .padding(8.dp),
             imageVector = Icons.Outlined.Notifications,
