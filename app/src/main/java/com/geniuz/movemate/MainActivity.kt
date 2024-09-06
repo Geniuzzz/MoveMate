@@ -46,7 +46,7 @@ fun MoveMateNavHost(navController: NavHostController) {
                     }
 
                     BottomBarDestinations.CALCULATE -> {
-                        CalculateScreen()
+                        CalculateScreen(navController)
                     }
 
                     BottomBarDestinations.SHIPMENT -> {
