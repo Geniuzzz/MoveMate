@@ -3,12 +3,14 @@ package com.geniuz.movemate.ui.components
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
@@ -27,7 +29,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.geniuz.movemate.R
+import com.geniuz.movemate.ui.theme.OrangeColor
 import com.geniuz.movemate.ui.theme.Purple40
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -94,6 +99,23 @@ fun TopSection(isFullScreen: Boolean, onFullScreen: (Boolean) -> Unit) {
                         imageVector = Icons.Outlined.Search,
                         contentDescription = "search"
                     )
+                },
+                trailingIcon = {
+                    Box(
+                        modifier = Modifier
+                            .padding(end = 8.dp)
+                            .size(40.dp)
+                            .background(OrangeColor, CircleShape)
+                            .padding(4.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            modifier = Modifier,
+                            tint = Color.White,
+                            painter = painterResource(id = R.drawable.outline_document_scanner_24),
+                            contentDescription = ""
+                        )
+                    }
                 }
             )
         }
