@@ -99,7 +99,10 @@ fun CalculateScreen(navController: NavController) {
                 containerColor = OrangeColor,
             ),
             onClick = {
-
+                navController.navigate("amount") {
+                    popUpTo(navController.graph.startDestinationId)
+                    launchSingleTop = true
+                }
             },
         ) {
             Text(
